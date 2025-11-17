@@ -45,30 +45,32 @@ The CHB-MIT Seizure Dataset used in this project can be downloaded from Kaggle:
 ---
 
 # 🧠 Model Architecture
+
+```bash
 seizure_predictor/
 │
 ├── app/
-│ └── streamlit_app.py
+│   └── streamlit_app.py
 │
 ├── src/
-│ ├── config.py
-│ ├── data_loader.py
-│ ├── edf_reader.py
-│ ├── model.py
-│ ├── train.py
-│ ├── evaluate.py
-│ └── utils.py
+│   ├── config.py
+│   ├── data_loader.py
+│   ├── edf_reader.py
+│   ├── model.py
+│   ├── train.py
+│   ├── evaluate.py
+│   └── utils.py
 │
 ├── models/
-│ └── best_model.h5
+│   └── best_model.h5
 │
 ├── dataset/
-│ └── raw/
-│ └── processed/
+│   ├── raw/
+│   └── processed/
 │
 ├── requirements.txt
 └── README.md
-
+```
 
 The prediction model uses:
 

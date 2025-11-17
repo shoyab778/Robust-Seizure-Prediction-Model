@@ -1,222 +1,140 @@
-# 🧠 Robust Seizure Prediction Model  
-### Using EEG Signals + Deep Learning (CNN–BiLSTM)
+project:
+  name: "Robust Seizure Prediction Model"
+  subtitle: "Using EEG Signals + Deep Learning (CNN–BiLSTM)"
+  description: |
+    This project implements a clinical-grade seizure prediction and detection
+    system using EEG signals. It provides a premium Streamlit dashboard with 
+    EEG waveform visualization, spectrogram analysis, probability timeline, 
+    seizure onset detection, and medical-style PDF report generation.
 
-This project implements a **clinical-grade seizure prediction and detection system** using EEG signals.  
-It includes:
+dataset:
+  name: "CHB-MIT Seizure Dataset"
+  source: "Kaggle"
+  link: "https://www.kaggle.com/datasets/adibadea/chbmitseizuredataset"
+  note: |
+    Dataset is NOT included in this repository due to GitHub size limits.
+    Place downloaded dataset files inside: seizure_predictor/dataset/
 
-- A premium Streamlit dashboard  
-- EEG waveform visualization  
-- Spectrogram analysis  
-- Probability timeline  
-- Seizure onset detection  
-- Medical-style PDF report generation  
-- Automatic EEG preprocessing  
-- CHB-MIT dataset support  
-- Clean, modern, professional UI  
+project_structure:
+  root: "seizure_predictor/"
+  folders:
+    - app/streamlit_app.py
+    - src/config.py
+    - src/data_loader.py
+    - src/edf_reader.py
+    - src/model.py
+    - src/train.py
+    - src/evaluate.py
+    - src/utils.py
+    - models/best_model.h5
+    - dataset/raw/
+    - dataset/processed/
+    - requirements.txt
+    - README.md
 
----
+features:
+  eeg_support:
+    - ".edf"
+    - ".npz"
+  seizure_detection:
+    - "Automatic feature extraction"
+    - "Seizure vs Non-Seizure classification"
+    - "Probability timeline"
+    - "Seizure onset detection"
+  premium_dashboard:
+    - "Clinical-grade white UI"
+    - "Multi-channel EEG viewer"
+    - "Spectrogram visualization"
+    - "Probability graph"
+    - "Suspicious region highlight"
+    - "Session notes"
+    - "Responsive modern layout"
+  report_generation:
+    - "Medical-style PDF"
+    - "CSV export"
 
-# 📥 Dataset
+model_architecture:
+  cnn:
+    description: "Extract spatial EEG channel patterns"
+  bilstm:
+    description: "Capture long-range temporal dependencies"
+  dense_layers:
+    description: "Dense + Dropout for generalization"
+  output_layer:
+    activation: "Sigmoid"
+    purpose: "Binary seizure classification"
+  advantage: |
+    Combines spatial + temporal learning, ideal for EEG-based seizure detection.
 
-The CHB-MIT Seizure Dataset used in this project can be downloaded from Kaggle:
+installation:
+  steps:
+    - step: "Clone repository"
+      command: |
+        git clone https://github.com/shoyab778/Robust-Seizure-Prediction-Model.git
+        cd Robust-Seizure-Prediction-Model
 
-➡️ **[CHB-MIT Seizure Dataset (Kaggle)](https://www.kaggle.com/datasets/adibadea/chbmitseizuredataset)**
+    - step: "Create & activate virtual environment"
+      command: |
+        python -m venv env
+        env\Scripts\activate   # For Windows
 
-> ⚠️ Dataset is **not included in this repo** because of GitHub's size restriction.  
-> Place downloaded dataset files inside:  
-seizure_predictor/dataset/
+    - step: "Install dependencies"
+      command: |
+        pip install -r requirements.txt
 
-yaml
-Copy code
+    - step: "Place dataset in project folder"
+      path: "seizure_predictor/dataset/"
 
----
+    - step: "Train model (Optional)"
+      command: |
+        python src/train.py
 
-# 📁 Project Structure
+    - step: "Run Streamlit dashboard"
+      command: |
+        streamlit run app/streamlit_app.py
+      url: "http://localhost:8501"
 
-seizure_predictor/
-│
-├── app/
-│ └── streamlit_app.py
-│
-├── src/
-│ ├── config.py
-│ ├── data_loader.py
-│ ├── edf_reader.py
-│ ├── model.py
-│ ├── train.py
-│ ├── evaluate.py
-│ └── utils.py
-│
-├── models/
-│ └── best_model.h5
-│
-├── dataset/
-│ └── raw/
-│ └── processed/
-│
-├── requirements.txt
-└── README.md
+dashboard_features:
+  upload: "Upload .edf or .npz EEG files with auto processing"
+  eeg_viewer:
+    - "Stacked clinical EEG visualization"
+    - "Grid lines"
+    - "Zoom"
+    - "Navigation"
+  spectrogram:
+    - "Time-frequency analysis"
+    - "High-intensity seizure region detection"
+  probability_timeline:
+    - "Per-second seizure probability"
+    - "Colored risk pattern"
+  onset_locator:
+    - "Automatic marking of predicted seizure onset"
+  pdf_report:
+    includes:
+      - "Waveforms"
+      - "Spectrogram"
+      - "Probability graph"
+      - "Detection results"
+      - "Precautions and recommendations"
 
-yaml
-Copy code
+medical_interpretation:
+  provided:
+    - "Possible risks"
+    - "Meaning of results"
+    - "Precautions"
+    - "When to seek medical help"
+  note: "Tool is NOT a medical diagnosis. For research & academic use only."
 
----
+future_enhancements:
+  - "Live EEG streaming"
+  - "Early seizure prediction (pre-ictal modeling)"
+  - "Transformer-based EEG models"
+  - "Edge deployment (Jetson Nano, Raspberry Pi)"
 
-# 🚀 Features
+credits:
+  - "CHB-MIT EEG Epilepsy Dataset"
+  - "MIT PhysioNet"
+  - "Kaggle contributors"
 
-## ✔ EEG File Support  
-- `.edf`  
-- `.npz`
-
-## ✔ Seizure Detection  
-- Automatic feature extraction  
-- Seizure vs Non-Seizure classification  
-- Probability timeline  
-- Seizure onset detection  
-
-## ✔ Premium Dashboard  
-- Clean, clinical-grade white UI  
-- Multi-channel EEG waveform viewer  
-- Spectrogram visualization  
-- Probability graph viewer  
-- Suspicious region highlight  
-- Session notes  
-- Responsive modern layout  
-
-## ✔ Report Generation  
-- PDF medical report (waveforms + spectrogram + conclusions)  
-- CSV export for EEG features  
-
----
-
-# 🧠 Model Architecture
-
-The prediction model uses:
-
-### 📌 **1. Convolution Blocks (1D CNN)**
-- Extract low-level EEG channel patterns  
-- Detect spatial filters  
-
-### 📌 **2. BiLSTM Layers**
-- Learn long-range temporal dependencies  
-- Identify pre-ictal → ictal transitions  
-- Bidirectional processing enhances accuracy  
-
-### 📌 **3. Fully Connected Layers**
-- Dense + Dropout for generalization  
-
-### 📌 **4. Output Layer**
-- **Sigmoid activation** for binary seizure classification  
-
-This hybrid architecture gives **temporal awareness + spatial understanding**, ideal for EEG-based detection.
-
----
-
-# 🔧 Installation & Setup
-
-Follow these steps to run the project locally.
-
----
-
-## ✔ 1. Clone the repository
-
-```bash
-git clone https://github.com/shoyab778/Robust-Seizure-Prediction-Model.git
-cd Robust-Seizure-Prediction-Model
-✔ 2. Create & activate virtual environment (Recommended)
-bash
-Copy code
-python -m venv env
-env\Scripts\activate   # For Windows
-✔ 3. Install dependencies
-bash
-Copy code
-pip install -r requirements.txt
-✔ 4. Place dataset in project folder
-Copy dataset files to:
-
-bash
-Copy code
-seizure_predictor/dataset/
-✔ 5. Train the model (Optional)
-bash
-Copy code
-python src/train.py
-✔ 6. Run the Streamlit app (Main Dashboard)
-bash
-Copy code
-streamlit run app/streamlit_app.py
-Then open:
-
-arduino
-Copy code
-http://localhost:8501
-📊 Dashboard Features (Premium)
-🔹 Upload EEG File
-Upload .edf or .npz → automatic processing.
-
-🔹 EEG Waveform Viewer
-Multi-channel clinical-style view
-
-Clean stacked waveform design
-
-Interactive zoom & navigation
-
-🔹 Spectrogram Viewer
-Time–frequency representation
-
-Highlights high-energy seizure regions
-
-🔹 Probability Timeline
-Per-second seizure probability
-
-Graphical risk pattern
-
-🔹 Seizure Onset Locator
-Automatic marking of predicted onset
-
-🔹 Medical-Style PDF Report
-Includes:
-
-Waveforms
-
-Spectrogram
-
-Probability graph
-
-Detection results
-
-Suggested precautions
-
-🩺 Medical Interpretation (Auto-generated)
-If seizure is detected, the dashboard provides:
-
-Possible risks
-
-What this means clinically
-
-Precautionary steps
-
-When to seek urgent medical help
-
-⚠ This tool is NOT a medical diagnosis.
-It is for research & academic purposes.
-
-🔮 Future Enhancements
-Live EEG data streaming
-
-Improved early prediction (pre-ictal modeling)
-
-Multi-channel transformer models
-
-Portable edge-device deployment
-
-❤️ Credits
-CHB-MIT EEG Epilepsy Dataset
-
-MIT PhysioNet
-
-Kaggle contributors
-
-📧 Contact
-For help, queries, or collaboration:
+contact:
+  email: "smdshoyab07@gmail.com"

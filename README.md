@@ -53,6 +53,7 @@ seizure_predictor/
 │   └── streamlit_app.py
 │
 ├── src/
+│   ├── __init__.py
 │   ├── config.py
 │   ├── data_loader.py
 │   ├── edf_reader.py
@@ -65,8 +66,7 @@ seizure_predictor/
 │   └── best_model.h5
 │
 ├── dataset/
-│   ├── raw/
-│   └── processed/
+│   └── predictive/
 │
 ├── requirements.txt
 └── README.md
